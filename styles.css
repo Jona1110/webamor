@@ -1,0 +1,250 @@
+/* Variables y Paleta de Colores (Diseño Romántico pero Moderno) */
+:root {
+    --primary-color: #ff4b72;
+    --secondary-color: #ff8fa3;
+    --bg-gradient: linear-gradient(135deg, #fff0f3 0%, #ffccd5 100%);
+    --text-color: #2b2b2b;
+    --glass-bg: rgba(255, 255, 255, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --font-main: 'Poppins', sans-serif;
+    --font-title: 'Playfair Display', serif;
+    --font-hand: 'Indie Flower', cursive;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: var(--font-main);
+    background: var(--bg-gradient);
+    color: var(--text-color);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* --- PANTALLA DE BIENVENIDA --- */
+.welcome-screen {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--bg-gradient);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 1s ease, visibility 1s;
+}
+
+.welcome-content {
+    text-align: center;
+    animation: fadeIn 1.5s ease;
+}
+
+.welcome-content h2 {
+    font-family: var(--font-title);
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin: 15px 0;
+}
+
+.floating-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    animation: float 3s ease-in-out infinite;
+}
+
+.heart-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    font-size: 2.5rem;
+    cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0 10px 20px rgba(255, 75, 114, 0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: pulse 2s infinite;
+}
+
+.heart-btn:hover { transform: scale(1.1); }
+
+/* Ocultar elementos */
+.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+/* --- CONTENEDOR PRINCIPAL Y PÉTALOS --- */
+#mainContent {
+    transition: opacity 1.5s ease;
+    position: relative;
+    z-index: 1;
+}
+
+#petalsContainer {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.petal {
+    position: absolute;
+    top: -10%;
+    background-color: #ff4b72;
+    border-radius: 15% 85% 15% 85%; /* Forma de pétalo */
+    opacity: 0.6;
+    animation: fall linear infinite;
+}
+
+/* --- HERO Y CONTADOR --- */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 25px;
+    padding: 40px;
+    text-align: center;
+    max-width: 650px;
+    width: 100%;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+}
+
+.title {
+    font-family: var(--font-title);
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.time-counter {
+    margin: 30px 0;
+    padding: 20px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 15px;
+}
+
+.counter-title {
+    font-style: italic;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.timer-display {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.time-box {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    min-width: 70px;
+}
+
+.time-box span {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.time-box small { font-size: 0.8rem; color: #777; text-transform: uppercase; }
+
+/* --- REPRODUCTOR DE AUDIO --- */
+.audio-player { margin-top: 25px; }
+.player-controls { display: flex; align-items: center; gap: 15px; }
+.control-btn {
+    background: var(--primary-color);
+    color: white; border: none;
+    width: 50px; height: 50px; border-radius: 50%;
+    font-size: 1.2rem; cursor: pointer; transition: 0.3s;
+}
+.progress-container { flex-grow: 1; background: #ddd; height: 8px; border-radius: 4px; cursor: pointer; }
+.progress-bar { background: var(--primary-color); width: 0%; height: 100%; border-radius: 4px; }
+.time-display { font-weight: 600; font-size: 0.9rem; min-width: 45px; }
+
+/* --- SECCIÓN CARTA --- */
+.letter-section { padding: 50px 20px; display: flex; justify-content: center; }
+.letter-paper {
+    background: #fff;
+    max-width: 700px;
+    text-align: left;
+    padding: 50px;
+    position: relative;
+}
+.quote-icon {
+    font-size: 2rem; color: var(--secondary-color);
+    opacity: 0.3; position: absolute; top: 20px; left: 20px;
+}
+.typewriter {
+    font-family: var(--font-hand);
+    font-size: 1.5rem; line-height: 1.8; color: #444;
+    min-height: 150px;
+}
+
+/* --- GALERÍA Y LIGHTBOX --- */
+.gallery-section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+.section-title { font-family: var(--font-title); font-size: 2.8rem; text-align: center; color: var(--primary-color); margin-bottom: 40px; }
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+.gallery-item {
+    border-radius: 20px; overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    aspect-ratio: 4/5; cursor: pointer; position: relative;
+}
+.gallery-item img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.gallery-item:hover img { transform: scale(1.1); }
+.gallery-item::after {
+    content: '\f00e'; font-family: 'Font Awesome 5 Free'; font-weight: 900;
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    color: white; font-size: 2rem; opacity: 0; transition: 0.3s;
+}
+.gallery-item:hover::after { opacity: 1; }
+
+/* Lightbox Modal */
+.lightbox {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9); z-index: 10000;
+    display: flex; justify-content: center; align-items: center;
+    opacity: 0; visibility: hidden; transition: 0.3s;
+}
+.lightbox.active { opacity: 1; visibility: visible; }
+.lightbox-content { max-width: 90%; max-height: 90%; border-radius: 10px; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+.close-lightbox {
+    position: absolute; top: 20px; right: 30px;
+    color: white; font-size: 3rem; cursor: pointer; transition: 0.2s;
+}
+.close-lightbox:hover { color: var(--primary-color); }
+
+footer { text-align: center; padding: 40px; color: #555; }
+.beat { color: var(--primary-color); animation: pulse 1.5s infinite; }
+
+/* --- ANIMACIONES --- */
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+@keyframes fall {
+    0% { transform: translateY(-10vh) rotate(0deg) translateX(0); opacity: 0; }
+    20% { opacity: 0.6; }
+    100% { transform: translateY(110vh) rotate(360deg) translateX(50px); opacity: 0; }
+}
+
+.scroll-anim { opacity: 0; transform: translateY(40px); transition: 0.8s ease-out; }
+.scroll-anim.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 768px) {
+    .title { font-size: 2.5rem; }
+    .timer-display { flex-wrap: wrap; }
+    .time-box { flex: 1 1 40%; }
+}

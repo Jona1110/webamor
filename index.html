@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Atziri</title>
+    <!-- Fuentes de Google: Poppins (texto), Playfair (Títulos), e Indie Flower (Carta) -->
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Playfair+Display:ital,wght@0,600;1,700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Iconos de FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Pantalla de Bienvenida (Interacción inicial para iniciar audio) -->
+    <div id="welcomeScreen" class="welcome-screen">
+        <div class="welcome-content">
+            <i class="fas fa-seedling floating-icon"></i>
+            <h2>Tengo una sorpresa para ti</h2>
+            <p>Toca el corazón para abrirla</p>
+            <button id="startBtn" class="heart-btn"><i class="fas fa-heart"></i></button>
+        </div>
+    </div>
+
+    <!-- Contenedor Principal (Oculto al inicio) -->
+    <main id="mainContent" class="hidden">
+        <!-- Contenedor para los pétalos cayendo -->
+        <div id="petalsContainer"></div>
+
+        <!-- Sección Hero -->
+        <header class="hero">
+            <div class="glass-card fade-in">
+                <h1 class="title">Hola, Atziri <i class="fas fa-sparkles"></i></h1>
+                <p class="subtitle">Esta flor es solo el comienzo, hacia tiempo que no te daba una, he creado este espacio para nosotros.</p>
+                
+                <!-- Contador de tiempo -->
+                <div class="time-counter">
+                    <p class="counter-title">Llenando mi vida de luz desde hace:</p>
+                    <div id="timer" class="timer-display">
+                        <div class="time-box"><span id="days">00</span><small>Días</small></div>
+                        <div class="time-box"><span id="hours">00</span><small>Horas</small></div>
+                        <div class="time-box"><span id="minutes">00</span><small>Min</small></div>
+                        <div class="time-box"><span id="seconds">00</span><small>Seg</small></div>
+                    </div>
+                </div>
+
+                <!-- Reproductor Minimalista -->
+                <div class="audio-player">
+                    <audio id="miAudio" src="assets/Ya Borracho.mp3" loop></audio>
+                    <div class="player-controls">
+                        <button id="playPauseBtn" class="control-btn"><i class="fas fa-pause"></i></button>
+                        <div class="progress-container" id="progressContainer">
+                            <div class="progress-bar" id="progressBar"></div>
+                        </div>
+                        <span id="timeDisplay" class="time-display">0:00</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Sección de Carta (Máquina de escribir) -->
+        <section class="letter-section">
+            <div class="letter-paper glass-card scroll-anim">
+                <i class="fas fa-quote-left quote-icon"></i>
+                <p id="typewriterText" class="typewriter"></p>
+                <!-- Texto oculto que el script leerá para el efecto -->
+                <span id="secretMessage" style="display:none;">Quería darte algo diferente, algo que perdure, cada foto aquí me recuerda por qué me enamoro más de ti todos los días, gracias por ser mi lugar seguro, mi inspiración y mi compañera de aventuras. Te amo muchísimo Mi Ojitos Verdes Bonitos.</span>
+            </div>
+        </section>
+
+        <!-- Sección de Galería -->
+        <section class="gallery-section">
+            <h2 class="section-title scroll-anim">Nuestros Momentos</h2>
+            <div class="gallery-grid">
+                <!-- Se agregó la clase 'gallery-img' para el Lightbox -->
+                <div class="gallery-item scroll-anim"><img src="assets/1.jpeg" alt="Recuerdo 1" class="gallery-img"></div>
+                <div class="gallery-item scroll-anim" style="transition-delay: 0.1s;"><img src="assets/2.jpeg" alt="Recuerdo 2" class="gallery-img"></div>
+                <div class="gallery-item scroll-anim" style="transition-delay: 0.2s;"><img src="assets/3.jpeg" alt="Recuerdo 3" class="gallery-img"></div>
+                <div class="gallery-item scroll-anim" style="transition-delay: 0.3s;"><img src="assets/4.jpeg" alt="Recuerdo 4" class="gallery-img"></div>
+                <div class="gallery-item scroll-anim" style="transition-delay: 0.4s;"><img src="assets/5.jpeg" alt="Recuerdo 5" class="gallery-img"></div>
+                <div class="gallery-item scroll-anim" style="transition-delay: 0.5s;"><img src="assets/6.jpeg" alt="Recuerdo 6" class="gallery-img"></div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Programado con <i class="fas fa-heart beat"></i> por y para ti.</p>
+        </footer>
+    </main>
+
+    <!-- Modal para Lightbox de Galería -->
+    <div id="lightbox" class="lightbox hidden">
+        <span class="close-lightbox">&times;</span>
+        <img id="lightboxImg" class="lightbox-content" src="" alt="Ampliación">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
